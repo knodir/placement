@@ -560,7 +560,7 @@ def _build_provider_summaries(context, usages, prov_traits):
                 resource_provider=rp_obj.ResourceProvider(
                     context, id=pids.id, uuid=pids.uuid,
                     root_provider_uuid=pids.root_uuid,
-                    parent_provider_uuid=pids.parent_uuid),
+                    parent_provider_uuid=pids.parent_uuid, name=usage.name),
                 resources=[],
             )
             summaries[rp_id] = summary
@@ -758,6 +758,7 @@ def _get_usages_by_provider_tree(ctx, root_ids):
     query = sa.select([
         rpt.c.id.label("resource_provider_id"),
         rpt.c.uuid.label("resource_provider_uuid"),
+        rpt.c.name.label("name"),
         inv.c.resource_class_id,
         inv.c.total,
         inv.c.reserved,

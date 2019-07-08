@@ -191,6 +191,7 @@ def _transform_provider_summaries(p_sums, requests, want_version):
         }
 
         ret[ps.resource_provider.uuid] = {'resources': resources}
+        ret[ps.resource_provider.uuid]['name'] = ps.resource_provider.name
 
         if include_traits:
             ret[ps.resource_provider.uuid]['traits'] = [
